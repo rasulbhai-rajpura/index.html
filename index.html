@@ -590,6 +590,8 @@ function handleSelect(ans) {
         currentIdx++;
         renderQuestion();
     }, 2000);
+} // અહી આ કૌંસ ખૂટતો હતો જે મેં મૂકી દીધો છે
+
 function endBatch() {
     // 1. લોકલ સ્ટોરેજમાં સેવ કરવા
     saveToLocal();
@@ -599,7 +601,7 @@ function endBatch() {
     const currentRoll = document.getElementById('rollNo').value;
     const currentChapter = document.getElementById('chapter').value;
 
-    // 3. ગુગલ શીટની લિંક (સ્પેસ કાઢીને કમ્પ્લીટ કરેલી)
+    // 3. ગુગલ શીટની લિંક
     const scriptURL = "https://script.google.com/macros/s/AKfycbz2fE1SmLEY_koT1wYhB3Ga9y2uS5pfW4GR6SkbnKgz1BoeZW6uVoepIekAqTQ3Oh4zXg/exec";
 
     // 4. ફાઈનલ સ્કોર માત્ર નંબર (આંકડા) તરીકે જ લેવો
@@ -611,23 +613,6 @@ function endBatch() {
         roll: currentRoll,
         chapter: currentChapter,
         score: finalScoreNumber
-    };
-
-    // 6. ગુગલ શીટમાં ડેટા ઓનલાઇન મોકલવો
-    fetch(scriptURL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(sheetData)
-    });
-
-    // 7. તમારો જૂનો મેસેજ અને પેજ રિલોડ કરવાનો કોડ
-    alert(`ક્વિઝ પૂર્ણ!\nનામ: ${currentName}\nસ્કોર: ${score}/${questions.length}`);
-    location.reload();
-}
-
     };
 
     // 6. ગુગલ શીટમાં ડેટા ઓનલાઇન મોકલવો
